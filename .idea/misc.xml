@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/parky/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_main.xml" value="0.1598731884057971" />
+        <entry key="..\:/Users/parky/AndroidStudioProjects/sgbProject/app/src/main/res/layout/calandar.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/parky/AndroidStudioProjects/sgbProject/app/src/main/res/layout/diary.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/parky/AndroidStudioProjects/sgbProject/app/src/main/res/layout/mainpage.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/parky/AndroidStudioProjects/sgbProject/app/src/main/res/layout/schedualer_main.xml" value="0.264" />
       </map>
     </option>
