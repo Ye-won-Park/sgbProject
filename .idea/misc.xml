@@ -3,12 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_main.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/drawable/border.xml" value="0.2359375" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/drawable/calandar.xml" value="0.2359375" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/drawable/line.xml" value="0.2359375" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/drawable/line_3.xml" value="0.1234375" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/drawable/mainpage.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/accountfragment.xml" value="0.2930253623188406" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_account.xml" value="0.26132246376811596" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_calandar.xml" value="0.315625" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_diary.xml" value="0.266304347826087" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_mainpage.xml" value="0.264" />
         <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/activity_scheduler.xml" value="0.25" />
         <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/calandar.xml" value="0.2" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/calandarfragment.xml" value="0.2930253623188406" />
         <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/diary.xml" value="0.25" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/fragment_account.xml" value="0.26132246376811596" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/fragment_calandar.xml" value="0.16" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/fragment_diary.xml" value="0.1" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/fragment_main.xml" value="0.266304347826087" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/fragment_money_page.xml" value="0.1" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/homefragment.xml" value="0.2" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/item_calender_header.xml" value="0.1" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/item_day.xml" value="0.4457236842105263" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/item_day_empty.xml" value="0.12273550724637682" />
         <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/mainpage.xml" value="0.22" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/menu_bottom.xml" value="0.2930253623188406" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/topFragment2.xml" value="0.28125" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/topfragment.xml" value="0.28125" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/topfragment1.xml" value="0.27239583333333334" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/topfragment2.xml" value="0.1" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/layout/topfragment3.xml" value="0.152" />
+        <entry key="..\:/Users/YOON YOUNGJUN/AndroidStudioProjects/sgbProject/app/src/main/res/menu/menu_bottom.xml" value="0.3359375" />
       </map>
     </option>
   </component>
