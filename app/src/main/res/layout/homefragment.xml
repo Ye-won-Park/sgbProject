@@ -7,11 +7,33 @@
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView_schedule"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="413dp"
+        android:layout_height="388dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:mcv_selectionColor="#a9dbf0cb"
         app:mcv_showOtherDates="defaults" />
+
+    <TextView
+        android:id="@+id/DetailTextView"
+        android:layout_width="314dp"
+        android:layout_height="179dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Date" />
+
+    <TextView
+        android:id="@+id/Date"
+        android:layout_width="176dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="-55dp"
+        android:layout_marginEnd="188dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView_schedule" />
 </androidx.constraintlayout.widget.ConstraintLayout>
