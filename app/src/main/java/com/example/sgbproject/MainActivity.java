@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbarC);
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         homeFragment = new HomeFragment();
         calendarFragment = new CalendarFragment();
         accountFragment = new AccountFragment();
-        TextView textView = findViewById(R.id.titleText);
+        TextView textView = findViewById(R.id.titleTextC);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, homeFragment).commit();
 

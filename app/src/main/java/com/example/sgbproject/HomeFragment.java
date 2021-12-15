@@ -17,6 +17,8 @@ import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Collections;
 
 public class HomeFragment extends Fragment {
@@ -34,8 +36,12 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-
         View v = inflater.inflate(R.layout.homefragment, container, false);
+        String[] EventDay = getContext().fileList();
+        for(int i = 0 ; i < EventDay.length ; i++){
+            EventDay[i].replace("1-","");
+            EventDay[i].replace(".txt","");
+        }
 
         calendarView = v.findViewById(R.id.calendarView_schedule);
         calendarView.setSelectedDate(CalendarDay.today());
@@ -44,9 +50,18 @@ public class HomeFragment extends Fragment {
         // 계획이 있는 날 표시해줘야함 ( 현재는 오늘만 표시 )
         calendarView.addDecorators(
                 new SundayDecorator(),
-                new SaturdayDecorator(),
-                new EventDecorator(Color.GREEN, Collections.singleton(CalendarDay.today()))
+                new SaturdayDecorator()
         );
+
+        for(int i = 0 ; i< EventDay.length ; i ++) {
+            if(!EventDay[i].contains("2-") || !EventDay[i].contains("3-")) {
+                String[] strings = EventDay[i].split("-");
+                int y = Integer.parseInt(strings[0]);
+                int m = Integer.parseInt(strings[1]);
+                int d = Integer.parseInt(strings[2]);
+                calendarView.addDecorators(new EventDecorator(Color.GREEN, Collections.singletonList(CalendarDay.from(y, m, d))));
+            }
+        }
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -69,6 +84,17 @@ public class HomeFragment extends Fragment {
                 day = Integer.parseInt(parsedDATA[2]);
                 String Day = year + "년 " + month + "월 " + day +"일";
                 textView_date.setText(Day);
+
+                try{
+                    FileInputStream fis = v.getContext().openFileInput("1-"+year + month + day+".txt");
+                    byte[] buffer = new byte[fis.available()];
+                    fis.read(buffer);
+
+                    textView_detail.setText(new String(buffer));
+                    fis.close();
+                } catch (IOException e) {
+                    textView_detail.setText("");
+                }
             }
         }
 
