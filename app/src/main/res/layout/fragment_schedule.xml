@@ -20,7 +20,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="할 일을 추가해보세요."
-            android:inputType="textLongMessage|textImeMultiLine" />
+            android:inputType="textLongMessage|textImeMultiLine"
+            android:fontFamily="@font/mainfont"/>
 
         <Button
             android:id="@+id/saveBtn"
@@ -28,12 +29,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClick"
-            android:text="추가" />
+            android:text="추가"
+            android:fontFamily="@font/mainfont"/>
     </LinearLayout>
 
     <ListView
+        android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:fontFamily="@font/mainfont"
+        android:choiceMode="multipleChoice"/>
 
 
 </LinearLayout>

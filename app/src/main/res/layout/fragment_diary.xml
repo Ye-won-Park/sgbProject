@@ -15,7 +15,8 @@
         android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/mainfont"/>
 
     <TextView
         android:id="@+id/ShowMonth"
@@ -27,7 +28,8 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/ShowDay"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/mainfont"/>
 
     <TextView
         android:id="@+id/ShowYear"
@@ -39,7 +41,8 @@
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/ShowDay"
-        app:layout_constraintTop_toBottomOf="@+id/ShowMonth" />
+        app:layout_constraintTop_toBottomOf="@+id/ShowMonth"
+        android:fontFamily="@font/mainfont"/>
 
     <EditText
         android:id="@+id/ContextTextView"
@@ -53,7 +56,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TitleTextView"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:fontFamily="@font/mainfont"/>
 
     <Button
         android:id="@+id/button"
@@ -63,7 +67,8 @@
         android:layout_marginEnd="60dp"
         android:text="작성"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/mainfont"/>
 
     <EditText
         android:id="@+id/TitleTextView"
@@ -76,6 +81,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ShowDay"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:fontFamily="@font/mainfont"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

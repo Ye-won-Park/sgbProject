@@ -13,7 +13,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:mcv_selectionColor="#F0EDFF"
-        app:mcv_showOtherDates="defaults" />
+        app:mcv_showOtherDates="defaults"
+        app:mcv_dateTextAppearance="@style/tab_text"
+        app:mcv_headerTextAppearance="@style/tab_text"
+        app:mcv_weekDayTextAppearance="@style/tab_text"/>
 
     <TextView
         android:id="@+id/DetailTextView"
@@ -22,9 +25,11 @@
         android:layout_marginStart="47dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="50dp"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Date" />
+        app:layout_constraintTop_toBottomOf="@+id/Date"
+        android:fontFamily="@font/mainfont"/>
 
     <TextView
         android:id="@+id/Date"
@@ -33,7 +38,10 @@
         android:layout_marginStart="47dp"
         android:layout_marginTop="-55dp"
         android:layout_marginEnd="188dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView_schedule" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView_schedule"
+        android:fontFamily="@font/mainfont"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

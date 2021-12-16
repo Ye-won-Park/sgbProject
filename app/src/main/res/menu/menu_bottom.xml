@@ -7,19 +7,22 @@
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@android:drawable/ic_menu_save"
-        android:title="홈" />
+        android:title="홈"
+        android:fontFamily="@font/mainfont"/>
 
     <item
         android:id="@+id/tab2"
         app:showAsAction="ifRoom"
         android:icon="@android:drawable/ic_menu_day"
-        android:title="캘린더" />
+        android:title="캘린더"
+        android:fontFamily="@font/mainfont"/>
 
     <item
         android:id="@+id/tab3"
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="가계부" />
+        android:title="가계부"
+        android:fontFamily="@font/mainfont"/>
 
 </menu>

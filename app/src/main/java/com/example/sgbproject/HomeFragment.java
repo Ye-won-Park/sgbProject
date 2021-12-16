@@ -69,17 +69,17 @@ public class HomeFragment extends Fragment {
             textView_detail.setText("");
         }
 
-        for(int i = 0 ; i< EventDay.length ; i++) {
-            if(EventDay[i].contains("1_")) {
-                String[] newEventDay = EventDay[i].split("_");
-                String[] strings = newEventDay[1].split("-");
-                int y = Integer.parseInt(strings[0]);
-                int m = Integer.parseInt(strings[1]);
-                int d = Integer.parseInt(strings[2]);
-                CalendarDay day = CalendarDay.from(y,m,d);
-                dates.add(day);
-            }
-        }
+//        for(int i = 0 ; i< EventDay.length ; i++) {
+//            if(EventDay[i].contains("1_")) {
+//                String[] newEventDay = EventDay[i].split("_");
+//                String[] strings = newEventDay[1].split("-");
+//                int y = Integer.parseInt(strings[0]);
+//                int m = Integer.parseInt(strings[1]);
+//                int d = Integer.parseInt(strings[2]);
+//                CalendarDay day = CalendarDay.from(y,m,d);
+//                dates.add(day);
+//            }
+//        }
 
         calendarView.addDecorators(
                 new SundayDecorator(),

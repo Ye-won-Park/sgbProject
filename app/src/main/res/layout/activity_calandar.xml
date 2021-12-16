@@ -22,13 +22,15 @@
                 android:background="@color/white"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                 android:elevation="1dp"
-                android:id="@+id/toolbarC">
+                android:id="@+id/toolbarC"
+                android:fontFamily="@font/mainfont">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/titleTextC"
                     style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"
                     android:text="타이틀"
+                    android:fontFamily="@font/mainfont"
                     />
             </androidx.appcompat.widget.Toolbar>
 
