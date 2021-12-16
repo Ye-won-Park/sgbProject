@@ -58,6 +58,16 @@ public class HomeFragment extends Fragment {
         parsedDATA = parsedDATA[1].split("[}]");
         parsedDATA = parsedDATA[0].split("-");
         textView_date.setText(parsedDATA[0] + "년 " + (Integer.parseInt(parsedDATA[1])+1) + "월 " + parsedDATA[2] +"일");
+        try{
+            FileInputStream fis = v.getContext().openFileInput("1_"+parsedDATA[0] +"-"+ (Integer.parseInt(parsedDATA[1])+1) +"-"+ parsedDATA[0]+".txt");
+            byte[] buffer = new byte[fis.available()];
+            fis.read(buffer);
+
+            textView_detail.setText(new String(buffer));
+            fis.close();
+        } catch (IOException e) {
+            textView_detail.setText("");
+        }
 
         for(int i = 0 ; i< EventDay.length ; i++) {
             if(EventDay[i].contains("1_")) {
@@ -68,7 +78,6 @@ public class HomeFragment extends Fragment {
                 int d = Integer.parseInt(strings[2]);
                 CalendarDay day = CalendarDay.from(y,m,d);
                 dates.add(day);
-
             }
         }
 

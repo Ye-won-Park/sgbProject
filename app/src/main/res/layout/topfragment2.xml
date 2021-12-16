@@ -16,24 +16,49 @@
         app:mcv_showOtherDates="defaults" />
 
     <TextView
-        android:id="@+id/detailTextView"
-        android:layout_width="314dp"
-        android:layout_height="179dp"
-        android:layout_marginStart="47dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
-
-    <TextView
         android:id="@+id/date"
         android:layout_width="176dp"
         android:layout_height="31dp"
         android:layout_marginStart="47dp"
         android:layout_marginTop="-55dp"
         android:layout_marginEnd="188dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView_schedule" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="319dp"
+        android:layout_height="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <EditText
+        android:id="@+id/textView_detail2"
+        android:layout_width="319dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="46dp"
+        android:background="@null"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:visibility="invisible"
+        android:text="작성"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView_schedule" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
