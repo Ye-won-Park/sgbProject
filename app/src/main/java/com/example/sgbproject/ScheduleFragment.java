@@ -28,7 +28,10 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_schedule,container,false);
+        Bundle bundle = getArguments();
+        String date = bundle.getString("Date");
+
+        View v = inflater.inflate(R.layout.fragment_schedule, container, false);
 
         textview_todo = v.findViewById(R.id.editTodo);
         saveBtn = v.findViewById(R.id.saveBtn);
@@ -39,7 +42,7 @@ public class ScheduleFragment extends Fragment {
             public void onClick(View v) {
                 try{
                     //파일 이름 만들기
-                    fileName = "1_";
+                    fileName = "1_" + date +".txt";
                     //파일생성 - 추가 갱신 저장
                     FileOutputStream fos = getActivity().openFileOutput(fileName, Context.MODE_APPEND);
                     str = textview_todo.getText().toString();

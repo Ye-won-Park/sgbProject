@@ -54,7 +54,7 @@ public class TopFragment3 extends Fragment {
         );
 
         for(int i = 0 ; i< EventDay.length ; i ++) {
-            if(!EventDay[i].contains("1-") || !EventDay[i].contains("2-")) {
+            if(EventDay[i].contains("3_")) {
                 String[] strings = EventDay[i].split("-");
                 int y = Integer.parseInt(strings[0]);
                 int m = Integer.parseInt(strings[1]);

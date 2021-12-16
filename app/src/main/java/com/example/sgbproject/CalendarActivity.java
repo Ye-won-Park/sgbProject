@@ -1,5 +1,6 @@
 package com.example.sgbproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -14,11 +15,14 @@ public class CalendarActivity extends AppCompatActivity {
     Toolbar toolbar;
     ScheduleFragment scheduleFragment;
     DiaryFragment diaryFragment;
-
+    Intent getIntent = getIntent();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calandar);
+
+        Intent intent = getIntent();
+        String date = intent.getStringExtra("Date");
 
         toolbar = (Toolbar) findViewById(R.id.toolbarC);
         setSupportActionBar(toolbar);
@@ -33,6 +37,9 @@ public class CalendarActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.addTab(tabs.newTab().setText("다이어리"));
         tabs.addTab(tabs.newTab().setText("스케쥴러"));
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, diaryFragment).commit();
 
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -51,6 +58,7 @@ public class CalendarActivity extends AppCompatActivity {
                         .replace(R.id.container, selected).commit();
             }
 
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
@@ -59,6 +67,12 @@ public class CalendarActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("Date",date);
+        diaryFragment.setArguments(bundle);
+        scheduleFragment.setArguments(bundle);
     }
 
 }

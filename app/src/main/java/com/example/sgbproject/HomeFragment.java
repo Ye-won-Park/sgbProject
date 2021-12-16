@@ -1,6 +1,7 @@
 package com.example.sgbproject;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.sgbproject.Decorator.EventDecorator;
@@ -19,7 +21,7 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
@@ -33,35 +35,51 @@ public class HomeFragment extends Fragment {
     int month;
     int day;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.homefragment, container, false);
         String[] EventDay = getContext().fileList();
+        ArrayList<CalendarDay> dates = new ArrayList<>();
+
         for(int i = 0 ; i < EventDay.length ; i++){
-            EventDay[i].replace("1-","");
-            EventDay[i].replace(".txt","");
+            EventDay[i] = EventDay[i].substring(0,EventDay[i].length()-4);
         }
 
         calendarView = v.findViewById(R.id.calendarView_schedule);
         calendarView.setSelectedDate(CalendarDay.today());
         textView_detail = v.findViewById(R.id.DetailTextView);
         textView_date = v.findViewById(R.id.Date);
-        // 계획이 있는 날 표시해줘야함 ( 현재는 오늘만 표시 )
-        calendarView.addDecorators(
-                new SundayDecorator(),
-                new SaturdayDecorator()
-        );
 
-        for(int i = 0 ; i< EventDay.length ; i ++) {
-            if(!EventDay[i].contains("2-") || !EventDay[i].contains("3-")) {
-                String[] strings = EventDay[i].split("-");
+
+        String today = CalendarDay.today().toString();
+        String[] parsedDATA = today.split("[{]");
+        parsedDATA = parsedDATA[1].split("[}]");
+        parsedDATA = parsedDATA[0].split("-");
+        textView_date.setText(parsedDATA[0] + "년 " + (Integer.parseInt(parsedDATA[1])+1) + "월 " + parsedDATA[2] +"일");
+
+        for(int i = 0 ; i< EventDay.length ; i++) {
+            if(EventDay[i].contains("1_")) {
+                String[] newEventDay = EventDay[i].split("_");
+                String[] strings = newEventDay[1].split("-");
                 int y = Integer.parseInt(strings[0]);
                 int m = Integer.parseInt(strings[1]);
                 int d = Integer.parseInt(strings[2]);
-                calendarView.addDecorators(new EventDecorator(Color.GREEN, Collections.singletonList(CalendarDay.from(y, m, d))));
+                CalendarDay day = CalendarDay.from(y,m,d);
+                dates.add(day);
+
             }
         }
+
+        calendarView.addDecorators(
+                new SundayDecorator(),
+                new SaturdayDecorator(),
+                new EventDecorator(Color.RED, dates)
+        );
+
+
+
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -86,7 +104,7 @@ public class HomeFragment extends Fragment {
                 textView_date.setText(Day);
 
                 try{
-                    FileInputStream fis = v.getContext().openFileInput("1-"+year + month + day+".txt");
+                    FileInputStream fis = v.getContext().openFileInput("1_"+year +"-"+ month +"-"+ day+".txt");
                     byte[] buffer = new byte[fis.available()];
                     fis.read(buffer);
 

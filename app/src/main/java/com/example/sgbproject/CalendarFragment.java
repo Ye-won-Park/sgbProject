@@ -39,10 +39,11 @@ public class CalendarFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_calendar,container,false);
         String[] EventDay = getContext().fileList();
+
         for(int i = 0 ; i < EventDay.length ; i++){
-            EventDay[i].replace("1-","");
-            EventDay[i].replace(".txt","");
+            EventDay[i] = EventDay[i].substring(0,EventDay[i].length()-4);
         }
+
 
         calendarView = v.findViewById(R.id.calendarView_schedule);
         calendarView.setSelectedDate(CalendarDay.today());
@@ -52,9 +53,10 @@ public class CalendarFragment extends Fragment {
                 new SaturdayDecorator()
         );
 
-        for(int i = 0 ; i< EventDay.length ; i ++) {
-            if(!EventDay[i].contains("2-") || !EventDay[i].contains("3-")) {
-                String[] strings = EventDay[i].split("-");
+        for(int i = 0 ; i< EventDay.length ; i++) {
+            if(!EventDay[i].contains("3_")) {
+                String[] newEventDay = EventDay[i].split("_");
+                String[] strings = newEventDay[1].split("-");
                 int y = Integer.parseInt(strings[0]);
                 int m = Integer.parseInt(strings[1]);
                 int d = Integer.parseInt(strings[2]);
@@ -83,6 +85,7 @@ public class CalendarFragment extends Fragment {
                 String Day = year + "년 " + month + "월 " + day +"일";
 
                 Intent intent = new Intent(getActivity(),CalendarActivity.class);
+                intent.putExtra("Date",year+"-"+month +"-"+day);
                 startActivity(intent);
             }
         });
