@@ -1,6 +1,7 @@
 package com.example.sgbproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,15 +70,22 @@ public class DiaryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 try{
-                    //파일 이름 만들기
-                    fileName = "2_" + splitData[0] +"-"+ splitData[1]+"-" + splitData[2] +".txt";
-                    //파일생성 - 추가 갱신 저장
-                    FileOutputStream fos = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
-                    str = textView_title.getText().toString() + "\n" + textview_context.getText().toString();
+                    if (textview_context.getText().toString().length() < 1) {
+                        Toast.makeText(getActivity(), "내용을 입력하세요", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        //파일 이름 만들기
+                        fileName = "2_" + splitData[0] + "-" + splitData[1] + "-" + splitData[2] + ".txt";
+                        //파일생성 - 추가 갱신 저장
+                        FileOutputStream fos = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
+                        str = textView_title.getText().toString() + "\n" + textview_context.getText().toString();
 
-                    fos.write(str.getBytes(StandardCharsets.UTF_8));
-                    fos.close();
-                    Toast.makeText(getActivity(),"추가완료", Toast.LENGTH_SHORT).show();
+                        fos.write(str.getBytes(StandardCharsets.UTF_8));
+                        fos.close();
+                        Toast.makeText(getActivity(), "추가완료", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
+                    }
                 }
                 catch (Exception e){
 

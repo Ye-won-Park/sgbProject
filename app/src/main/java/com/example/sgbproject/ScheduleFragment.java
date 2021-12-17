@@ -1,6 +1,7 @@
 package com.example.sgbproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -94,6 +95,8 @@ public class ScheduleFragment extends Fragment {
                         fos.close();
                         Toast.makeText(getActivity(), "추가완료", Toast.LENGTH_SHORT).show();
                         sch_Adapter.notifyDataSetChanged();
+                        Intent intent = new Intent(getActivity(),MainActivity.class);
+                        startActivity(intent);
                     }
 
                 } catch (Exception e) {
