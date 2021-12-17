@@ -37,8 +37,8 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fontFamily="@font/mainfont"
-        android:choiceMode="multipleChoice"/>
+        android:choiceMode="multipleChoice"
+        android:fontFamily="@font/mainfont" />
 
 
 </LinearLayout>

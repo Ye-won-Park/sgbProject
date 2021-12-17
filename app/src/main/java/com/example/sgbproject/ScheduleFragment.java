@@ -3,10 +3,10 @@ package com.example.sgbproject;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -16,9 +16,14 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -52,6 +57,8 @@ public class ScheduleFragment extends Fragment {
         sch_ListView = v.findViewById(R.id.list);
         sch_Adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_multiple_choice, items);
         sch_ListView.setAdapter(sch_Adapter);
+
+
 
         try {
             FileInputStream fis = v.getContext().openFileInput("1_" + date + ".txt");
@@ -97,68 +104,52 @@ public class ScheduleFragment extends Fragment {
 
         });
 
-        try{
-            int index;
+        sch_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                items.remove(position);
+                sch_ListView.clearChoices();
+                sch_Adapter.notifyDataSetChanged();
+                String path = getActivity().getFilesDir().getAbsolutePath();
+                File file = new File(path+"/"+"1_"+date+".txt");
+                try{
+                    BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
+                    String dummy = "";
+                    String line;
+                    if(items.size() == 1){
+                    }
+                    else if(position == 0){
+                        String delData = br.readLine();
 
-            SparseBooleanArray check = sch_ListView.getCheckedItemPositions();
-            for(int a=0; a<check.size(); a++) {
-                check = sch_ListView.getCheckedItemPositions(); // 갱신된 리스트뷰를 토대로 재설정
-                for(index=0; index<items.size(); index++) {
-                    if(check.get(index)) break;
+                        while (((line = br.readLine()) != null)) {
+                            dummy += line;
+                        }
+                    }else {
+                        for (int a = 0; a < position; a++) {
+                            line = br.readLine();
+                            dummy += line;
+                        }
+                        String delData = br.readLine();
+
+                        while (((line = br.readLine()) != null)) {
+                            dummy += line;
+                        }
+                    }
+
+                    FileWriter fw = new FileWriter("1_"+date+".txt");
+                    fw.write(dummy);
+                    //bw.close();
+                    fw.close();
+                    br.close();
                 }
-                FileInputStream fis = v.getContext().openFileInput("1_" + date + ".txt");
-                BufferedReader bufferReader = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
-                for(int i = 0 ; i < index ; i ++){
-                    String A = bufferReader.readLine();   // 지우려는 아이템까지 이동 (지우려는 텍스트 A)
+                catch (IOException e) {
+
                 }
-
-
-                byte[] buffer = new byte[fis.available()];
-                fis.read(buffer);
-
-                String context = new String(buffer); // => 본래 txt파일
-
-                String[] newString = context.split("A"+"\n"); // => A 기준으로 newString[0] , newString [1] 로 나뉨.
-
-                context = newString[0] + newString[1];
-
-                FileOutputStream fos = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE); // 덮어쓰기
-                fos.write(context.getBytes(StandardCharsets.UTF_8));
-                fos.close();
-
-
-                items.remove(index);
-                sch_Adapter.notifyDataSetChanged();   // 삭제 이후 ListView가 변경됐음을 다시 갱신
             }
-
-            sch_ListView.clearChoices();
-            sch_Adapter.notifyDataSetChanged();
-        }
-        catch (Exception e){
-
-        }
-        sch_Adapter.notifyDataSetChanged();
+        });
 
 
         return v;
     }
 }
-
-//    //파일로부터 리스트뷰 아이템 읽어오기
-//    public void loadItemsFromFile() {
-//        try{
-//            FileInputStream fis = v.getContext().openFileInput("1_"+splitData[0] + splitData[1] +splitData[2]+".txt");
-//            BufferedReader bufferReader = new BufferedReader(new InputStreamReader(infs,"UTF-8"));
-//
-//            String temp;
-//            while((temp= bufferReader.readLine()) != null){
-//                Log.v(temp,"현재문구"+ temp);
-//                sch_Adapter.add(temp);
-//
-//            }
-//
-//        }
-//        catch(Exception e){
-//
-//        }
-//    }
