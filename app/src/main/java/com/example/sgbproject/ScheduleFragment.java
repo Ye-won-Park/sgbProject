@@ -120,7 +120,7 @@ public class ScheduleFragment extends Fragment {
                     if(items.size() == 1){
                     }
                     else if(position == 0){
-                        String delData = br.readLine();
+                        br.readLine();
 
                         while (((line = br.readLine()) != null)) {
                             dummy += line;
