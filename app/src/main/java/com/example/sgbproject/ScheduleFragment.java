@@ -1,7 +1,6 @@
 package com.example.sgbproject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,14 +16,10 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
@@ -95,8 +90,7 @@ public class ScheduleFragment extends Fragment {
                         fos.close();
                         Toast.makeText(getActivity(), "추가완료", Toast.LENGTH_SHORT).show();
                         sch_Adapter.notifyDataSetChanged();
-                        Intent intent = new Intent(getActivity(),MainActivity.class);
-                        startActivity(intent);
+
                     }
 
                 } catch (Exception e) {
@@ -110,31 +104,29 @@ public class ScheduleFragment extends Fragment {
         sch_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                ArrayList<String> newitmes = items;
                 items.remove(position);
                 sch_ListView.clearChoices();
-                sch_Adapter.notifyDataSetChanged();
-                String path = getActivity().getFilesDir().getAbsolutePath();
-                File file = new File(path+"/"+"1_"+date+".txt");
+
+//                newitmes.remove(position);
+                String newData="";
+                for(int i = 0 ; i < newitmes.size()-1 ; i++)
+                    newData += newitmes.get(i)+"\n";
+
+                newData += newitmes.get(newitmes.size()-1);
+
                 try{
-                    BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
-                    String dummy = "";
-                    for(int i = 0 ; i < items.size() ; i++){
-                        dummy += items.get(i);
-                    }
-
-                    FileWriter fw = new FileWriter("1_"+date+".txt");
-                    fw.write(dummy);
-                    fw.close();
-                    br.close();
-                }
-                catch (IOException e) {
+                    fileName = "1_" + date + ".txt";
+                    //파일생성 - 추가 갱신 저장
+                    FileOutputStream fos = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
+                    fos.write(newData.getBytes(StandardCharsets.UTF_8));
+                    fos.close();
+                }catch (IOException e){
 
                 }
+                sch_Adapter.notifyDataSetChanged();
             }
         });
-
-
         return v;
     }
 }
