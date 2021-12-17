@@ -116,30 +116,12 @@ public class ScheduleFragment extends Fragment {
                     BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
                     BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
                     String dummy = "";
-                    String line;
-                    if(items.size() == 1){
-                    }
-                    else if(position == 0){
-                        br.readLine();
-
-                        while (((line = br.readLine()) != null)) {
-                            dummy += line;
-                        }
-                    }else {
-                        for (int a = 0; a < position; a++) {
-                            line = br.readLine();
-                            dummy += line;
-                        }
-                        String delData = br.readLine();
-
-                        while (((line = br.readLine()) != null)) {
-                            dummy += line;
-                        }
+                    for(int i = 0 ; i < items.size() ; i++){
+                        dummy += items.get(i);
                     }
 
                     FileWriter fw = new FileWriter("1_"+date+".txt");
                     fw.write(dummy);
-                    //bw.close();
                     fw.close();
                     br.close();
                 }

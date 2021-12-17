@@ -46,6 +46,7 @@
 
     <EditText
         android:id="@+id/ContextTextView"
+        android:hint="내용"
         android:layout_width="299dp"
         android:layout_height="422dp"
         android:layout_marginStart="59dp"
@@ -72,6 +73,7 @@
 
     <EditText
         android:id="@+id/TitleTextView"
+        android:hint="제목"
         android:layout_width="292dp"
         android:layout_height="52dp"
         android:layout_marginStart="59dp"
