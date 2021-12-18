@@ -32,8 +32,10 @@ public class account_list extends AppCompatActivity {
         for (int i = 0; i < filename.length; i++) {
             String[] title = filename[i].split(".txt");
             title = title[0].split("_");
-            title = title[1].split(("-"));
-            items.add(title[0] +"년 " +title[1]+"월 "+title[2]+"일") ; // items에 년-월-일 / 제목 의 형태로 파일명이 저장
+            if (title[0].equals("3")) {
+                title = title[1].split(("-"));
+                items.add(title[0] + "년 " + title[1] + "월 " + title[2] + "일"); // items에 년-월-일 / 제목 의 형태로 파일명이 저장
+            }
 
             Collections.sort(items); // 날짜으로 리스트 아이템을 정렬. 만약 동일한 날짜면 제목 순으로 정렬
             adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, items);

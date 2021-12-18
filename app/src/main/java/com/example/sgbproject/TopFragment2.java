@@ -122,16 +122,7 @@ public class TopFragment2 extends Fragment {
                 new SaturdayDecorator()
         );
 
-//        for(int i = 0 ; i< EventDay.length ; i++) {
-//            if(EventDay[i].contains("2_")) {
-//                String[] newEventDay = EventDay[i].split("_");
-//                String[] strings = newEventDay[1].split("-");
-//                int y = Integer.parseInt(strings[0]);
-//                int m = Integer.parseInt(strings[1]);
-//                int d = Integer.parseInt(strings[2]);
-//                calendarView.addDecorators(new EventDecorator(Color.GREEN, Collections.singletonList(CalendarDay.from(y, m, d))));
-//            }
-//        }
+
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override

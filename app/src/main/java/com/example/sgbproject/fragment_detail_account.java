@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,10 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class fragment_detail_account extends AppCompatActivity {
 
     private String fileName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,13 @@ public class fragment_detail_account extends AppCompatActivity {
         TextView cate = findViewById(R.id.sCate);
         TextView pay = findViewById(R.id.sPay);
         TextView memo = findViewById(R.id.sMemo);
+
+
+
+
+        Button editB = findViewById(R.id.editB);
+
+        LinearLayout dialogView;
 
         try {
             FileInputStream f = openFileInput((fileName));
@@ -47,7 +61,71 @@ public class fragment_detail_account extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        editB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater vi =(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LinearLayout dialog_view = (LinearLayout) vi.inflate(R.layout.dialog_view,null);
+
+                TextView edtD = dialog_view.findViewById(R.id.edtDate);
+                final EditText edtC = (EditText) dialog_view.findViewById(R.id.edtCate);
+                final EditText edtP = (EditText) dialog_view.findViewById(R.id.edtPay);
+                final EditText edtM = (EditText) dialog_view.findViewById(R.id.edtMemo);
+
+                //EditText 기본 데이터 삽입(텍스트 읽기)
+                try {
+                    FileInputStream f = openFileInput((fileName));
+                    byte[] buffer = new byte[f.available()];
+                    f.read(buffer);
+
+                    String[] data = (new String(buffer)).split("\n"); // 한 줄을 기준으로 분할하여 배열에 저장
+
+                    edtD.setText(data[0]);
+                    edtC.setText(data[1]);
+                    edtP.setText(data[2]);
+                    edtM.setText(data[3]);
+
+                    f.close();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                //다이얼로그 띄우기
+                AlertDialog.Builder dlg = new AlertDialog.Builder(fragment_detail_account.this).setTitle("가계부 수정").setView(dialog_view);
+                dlg.setPositiveButton("수정", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        date.setText(edtD.getText().toString()); // textView 변경
+                        cate.setText(edtC.getText().toString());
+                        pay.setText(edtP.getText().toString());
+                        memo.setText(edtM.getText().toString());
+
+                        FileOutputStream Mfile = null;
+                        //파일 내용 수정
+                        try{
+                            Mfile = openFileOutput(fileName, Context.MODE_PRIVATE);   // 파일을 열어서 내역 덮어쓰기
+                            Mfile.write((date + "\n").getBytes(StandardCharsets.UTF_8));
+                            Mfile.write((cate.getText().toString() + "\n").getBytes(StandardCharsets.UTF_8));
+                            Mfile.write((pay.getText().toString() + "\n").getBytes(StandardCharsets.UTF_8));
+                            Mfile.write((memo.getText().toString() + "\n").getBytes(StandardCharsets.UTF_8));
+                        }catch (IOException e){
+
+                        }
+
+                    }
+                });
+                dlg.setNegativeButton("취소",null);
+                dlg.show();
+
+            }
+        });
+
     }
+
+
+
 
     public void onClick(View v){
         Context c = this;

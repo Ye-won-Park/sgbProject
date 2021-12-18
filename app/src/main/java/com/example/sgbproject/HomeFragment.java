@@ -1,6 +1,5 @@
 package com.example.sgbproject;
 
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import com.example.sgbproject.Decorator.EventDecorator;
 import com.example.sgbproject.Decorator.SaturdayDecorator;
 import com.example.sgbproject.Decorator.SundayDecorator;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -69,22 +67,9 @@ public class HomeFragment extends Fragment {
             textView_detail.setText("");
         }
 
-//        for(int i = 0 ; i< EventDay.length ; i++) {
-//            if(EventDay[i].contains("1_")) {
-//                String[] newEventDay = EventDay[i].split("_");
-//                String[] strings = newEventDay[1].split("-");
-//                int y = Integer.parseInt(strings[0]);
-//                int m = Integer.parseInt(strings[1]);
-//                int d = Integer.parseInt(strings[2]);
-//                CalendarDay day = CalendarDay.from(y,m,d);
-//                dates.add(day);
-//            }
-//        }
-
         calendarView.addDecorators(
                 new SundayDecorator(),
-                new SaturdayDecorator(),
-                new EventDecorator(Color.RED, dates)
+                new SaturdayDecorator()
         );
 
 
