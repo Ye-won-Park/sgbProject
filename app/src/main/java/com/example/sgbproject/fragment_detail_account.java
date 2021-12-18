@@ -31,7 +31,7 @@ public class fragment_detail_account extends AppCompatActivity {
         TextView memo = findViewById(R.id.sMemo);
 
         try {
-            FileInputStream f = openFileInput((fileName + ".txt"));
+            FileInputStream f = openFileInput((fileName));
             byte[] buffer = new byte[f.available()];
             f.read(buffer);
 
@@ -58,9 +58,8 @@ public class fragment_detail_account extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 try {
-
-                    FileOutputStream file = c.openFileOutput(fileName+".txt",Context.MODE_PRIVATE);
-                    c.deleteFile(fileName+".txt");  // 삭제시 해당 파일을 삭제하고 토스트 메시지 출력
+                    FileOutputStream file = c.openFileOutput(fileName,Context.MODE_PRIVATE);
+                    c.deleteFile(fileName);  // 삭제시 해당 파일을 삭제하고 토스트 메시지 출력
                     Toast.makeText(fragment_detail_account.this, "파일이 삭제되었습니다.",
                             Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(fragment_detail_account.this, account_list.class);  // 시작 화면으로 돌아감
