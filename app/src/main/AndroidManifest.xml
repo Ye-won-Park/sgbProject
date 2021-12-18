@@ -23,6 +23,21 @@
             android:name=".CalendarActivity"
             android:label="CalendarActivity"
             ></activity>
+
+        <activity
+            android:name=".account_list"
+            android:label="account_list"
+            ></activity>
+
+        <activity
+            android:name=".edit_account"
+            android:label="edit_account"
+            ></activity>
+        <activity
+            android:name=".fragment_detail_account"
+            android:label="fragment_detail_account"
+            ></activity>
+
     </application>
 
 </manifest>

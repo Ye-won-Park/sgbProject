@@ -63,6 +63,7 @@ public class ScheduleFragment extends Fragment {
             while ((temp = bufferReader.readLine()) != null) {
                 Log.v(temp, "현재문구" + temp);
                 sch_Adapter.add(temp);
+
             }
         } catch (Exception e) {
 
@@ -104,22 +105,26 @@ public class ScheduleFragment extends Fragment {
         sch_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                ArrayList<String> newitmes = items;
                 items.remove(position);
                 sch_ListView.clearChoices();
-
-//                newitmes.remove(position);
-                String newData="";
-                for(int i = 0 ; i < newitmes.size()-1 ; i++)
-                    newData += newitmes.get(i)+"\n";
-
-                newData += newitmes.get(newitmes.size()-1);
 
                 try{
                     fileName = "1_" + date + ".txt";
                     //파일생성 - 추가 갱신 저장
+                    String newData="";
+                    for(int i = 0 ; i < items.size()-1 ; i++) {
+                        newData += items.get(i)+"\n";
+                        Toast.makeText(getActivity(), newData, Toast.LENGTH_SHORT).show();
+                        newData.replace("\n\n","\n");
+                    }
+
+
+                    if(items.size() > 1) {
+                        newData += items.get(items.size() - 1);
+                    }
                     FileOutputStream fos = getActivity().openFileOutput(fileName, Context.MODE_PRIVATE);
                     fos.write(newData.getBytes(StandardCharsets.UTF_8));
+                    fos.flush();
                     fos.close();
                 }catch (IOException e){
 
