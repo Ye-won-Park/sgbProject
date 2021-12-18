@@ -23,11 +23,10 @@ public class edit_account extends AppCompatActivity {
     private EditText editCategory;  // 소비의 종류를 저장할 문자형 변수
     private EditText editPay;
     private EditText editMemo;
-
     private TextView consumeDate;   //소비 날짜를 저장할 텍스트뷰 변수 선언
     private DatePickerDialog.OnDateSetListener MdateSet;  //날짜 설정 시의 이벤트를 위한 OnDateSetListener 변수 선언
     Calendar Today = Calendar.getInstance();  // 선택하는 날짜를 인수로 가져오기 위해 Calendar 객체에 getInstance 적용
-
+    String Date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +47,7 @@ public class edit_account extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 consumeDate.setText(year + "년" + (month + 1) + "월" + dayOfMonth + "일");
+                Date = year +"-" + (month+1) + "-" + dayOfMonth;
             }
         };
     }
@@ -75,7 +75,7 @@ public class edit_account extends AppCompatActivity {
             builder.setMessage("날짜 : " + date + "\n소비 종류 : " + M2 +
                     "\n지출금액 : " + pay + " 원\n메모 : " + M + " \n저장 하겠습니까?");
 
-            String fileName = "3_" + date + ".txt";   //생성되는 파일의 이름을 저장하는 fileName (파일 형식은 3_년도-월-일.txt)
+            String fileName = "3_" + Date + ".txt";   //생성되는 파일의 이름을 저장하는 fileName (파일 형식은 3_년도-월-일.txt)
 
             builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                 @Override

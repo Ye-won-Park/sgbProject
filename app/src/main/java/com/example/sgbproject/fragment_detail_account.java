@@ -63,8 +63,7 @@ public class fragment_detail_account extends AppCompatActivity {
                     c.deleteFile(fileName+".txt");  // 삭제시 해당 파일을 삭제하고 토스트 메시지 출력
                     Toast.makeText(fragment_detail_account.this, "파일이 삭제되었습니다.",
                             Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(fragment_detail_account.this, AccountFragment.class);  // 시작 화면으로 돌아감
-
+                    Intent intent = new Intent(fragment_detail_account.this, account_list.class);  // 시작 화면으로 돌아감
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // 쌓인 액티비티를 모두 종료
                     startActivity(intent);
                 } catch (Exception e) {
