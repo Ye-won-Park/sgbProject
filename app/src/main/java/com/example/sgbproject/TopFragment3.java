@@ -1,6 +1,5 @@
 package com.example.sgbproject;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,16 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.sgbproject.Decorator.EventDecorator;
 import com.example.sgbproject.Decorator.SaturdayDecorator;
 import com.example.sgbproject.Decorator.SundayDecorator;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Collections;
+import java.io.InputStreamReader;
 
 public class TopFragment3 extends Fragment {
     private MaterialCalendarView calendarView;
@@ -53,15 +52,15 @@ public class TopFragment3 extends Fragment {
                 new SaturdayDecorator()
         );
 
-        for(int i = 0 ; i< EventDay.length ; i ++) {
-            if(EventDay[i].contains("3_")) {
-                String[] strings = EventDay[i].split("-");
-                int y = Integer.parseInt(strings[0]);
-                int m = Integer.parseInt(strings[1]);
-                int d = Integer.parseInt(strings[2]);
-                calendarView.addDecorators(new EventDecorator(Color.GREEN, Collections.singletonList(CalendarDay.from(y, m, d))));
-            }
-        }
+//        for(int i = 0 ; i< EventDay.length ; i ++) {
+//            if(EventDay[i].contains("3_")) {
+//                String[] strings = EventDay[i].split("-");
+//                int y = Integer.parseInt(strings[0]);
+//                int m = Integer.parseInt(strings[1]);
+//                int d = Integer.parseInt(strings[2]);
+//                calendarView.addDecorators(new EventDecorator(Color.GREEN, Collections.singletonList(CalendarDay.from(y, m, d))));
+//            }
+//        }
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
@@ -85,11 +84,18 @@ public class TopFragment3 extends Fragment {
                 textView_date.setText(Day);
 
                 try{
-                    FileInputStream fis = v.getContext().openFileInput("3-"+year + month + day+".txt");
-                    byte[] buffer = new byte[fis.available()];
-                    fis.read(buffer);
+                    FileInputStream fis = v.getContext().openFileInput("3_"+year+"-"+ month+"-" + day+".txt");
+                    BufferedReader br = new BufferedReader(new InputStreamReader(fis, "UTF-8"));
+                    String line;
+                    String[] split = new String[4];
+                    int i = 0;
+                    while((line = br.readLine()) !=null) {
+                        split[i] = line;
+                        i++;
+                    }
+                    String Context = split[1] + ": " + split[2];
 
-                    textView_detail.setText(new String(buffer));
+                    textView_detail.setText(Context);
                     fis.close();
                 } catch (IOException e) {
                     textView_detail.setText("");
